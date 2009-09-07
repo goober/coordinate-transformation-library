@@ -1,17 +1,25 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *  CoordinateTransformationLibrary - Mathias Åhsberg 2009
+ *
+ *  RT90, SWEREF99 and WGS84 coordinate transformation library
+ *
+ * Visit my repository at http://github.com/goober
+ *
+ * This library is a java port of the .NET library by Björn Sållarp.
+ *  calculations are based entirely on the excellent
+ *  javscript library by Arnold Andreassons.
+ *
+ * Source: http://www.lantmateriet.se/geodesi/
+ * Source: Arnold Andreasson, 2007. http://mellifica.se/konsult
+ * Source: Björn Sållarp. 2009. http://blog.sallarp.com
+ * Author: Mathias Åhsberg, 2009. http://github.com/goober/
+ *
+ * License: http://creativecommons.org/licenses/by-nc-sa/3.0/
  */
 package coordinatetransformation.positions;
 
 import coordinatetransformation.GaussKreuger;
 import coordinatetransformation.Position;
-
-/**
- *
- * @author goober
- */
-
 
 public class SWEREF99Position extends Position {
 
@@ -34,17 +42,34 @@ public class SWEREF99Position extends Position {
 
     private SWEREFProjection projection;
 
+    /**
+     * Create a SWEREF99 position from double values with SWEEREF 99 TM as default projection
+     * @param n North value
+     * @param e East value
+     */
     public SWEREF99Position(double n, double e) {
         super(n, e, Grid.SWEREF99);
 
         this.projection = SWEREFProjection.sweref_99_tm;
     }
 
+    /**
+     * Create a SWEREF99 position from double values. Suplly the projection for values
+     * other than SWEREF 99 TM
+     * @param n North value
+     * @param e East value
+     * @param projection Projection type
+     */
     public SWEREF99Position(double n, double e, SWEREFProjection projection) {
         super(n, e, Grid.SWEREF99);
         this.projection = projection;
     }
 
+    /**
+     * Create a SWEREF99 position by converting a WGS84 position
+     * @param position WGS84 position to convert
+     * @param projection Projection to convert to
+     */
     public SWEREF99Position(WGS84Position position, SWEREFProjection projection) {
 
         super(Grid.SWEREF99);
@@ -57,6 +82,10 @@ public class SWEREF99Position extends Position {
         this.projection = projection;
     }
 
+    /**
+     * Convert the position to WGS84 format
+     * @return
+     */
     public WGS84Position toWGS84() {
         GaussKreuger gkProjection = new GaussKreuger();
         gkProjection.swedish_params(getProjectionString(this.projection));
@@ -67,6 +96,10 @@ public class SWEREF99Position extends Position {
         return newPos;
     }
 
+    /**
+     * Get projection type as String
+     * @return
+     */
     public String getProjectionString() {
         return getProjectionString(this.projection);
     }

@@ -1,5 +1,21 @@
-
-
+/**
+ *  CoordinateTransformationLibrary - Mathias Åhsberg 2009
+ *
+ *  RT90, SWEREF99 and WGS84 coordinate transformation library
+ *
+ * Visit my repository at http://github.com/goober
+ *
+ * This library is a java port of the .NET library by Björn Sållarp.
+ *  calculations are based entirely on the excellent
+ *  javscript library by Arnold Andreassons.
+ *
+ * Source: http://www.lantmateriet.se/geodesi/
+ * Source: Arnold Andreasson, 2007. http://mellifica.se/konsult
+ * Source: Björn Sållarp. 2009. http://blog.sallarp.com
+ * Author: Mathias Åhsberg, 2009. http://github.com/goober/
+ *
+ * License: http://creativecommons.org/licenses/by-nc-sa/3.0/
+ */
 package coordinatetransformation.positions;
 
 
@@ -10,13 +26,29 @@ public class WGS84Position extends Position {
 
 public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
 
+    /**
+     * Create a new WGS84 position with empty coordinates
+     */
     public WGS84Position() {
         super(Grid.WGS84);
     }
 
+    /**
+     * Create a new WGS84 position with latitude and longitude
+     * @param latitude
+     * @param longitude
+     */
     public WGS84Position(double latitude, double longitude) {
         super(latitude,longitude,Grid.WGS84);
     }
+
+    /**
+     * Create a new WGS84 position from a String containing both latitude
+     * and longitude. The string is parsed based on the supplied format.
+     * @param positionString
+     * @param format
+     * @throws java.lang.Exception
+     */
     public WGS84Position(String positionString, WGS84Format format) throws Exception{
         super(Grid.WGS84);
 
@@ -49,6 +81,11 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
         }
     }
 
+    /**
+     * Set the latitude value from a string. The string is parsed based on given format.
+     * @param value
+     * @param format
+     */
     public void setLatitudeFromString(String value, WGS84Format format) {
         value = value.trim();
 
@@ -60,6 +97,12 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
             this.latitude = Double.parseDouble(value);
 
     }
+
+    /**
+     * Set the longitude value from a string. The string is parsed based on given format.
+     * @param value
+     * @param format
+     */
         public void setLongitudeFromString(String value, WGS84Format format) {
         value = value.trim();
 
@@ -71,6 +114,11 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
             this.longitude = Double.parseDouble(value);
 
     }
+        /**
+         * Returns a string representation in the given format
+         * @param format
+         * @return
+         */
         public String latitudeToString(WGS84Format format) {
                              if (format == WGS84Format.DegreesMinutes)
                 return convToDmString(this.latitude,"N","S");
@@ -79,6 +127,11 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
             else
                 return Double.toString(this.latitude);
         }
+        /**
+         * Returns a string represenation in the given format
+         * @param format
+         * @return
+         */
            public String longitudeToString(WGS84Format format) {
                                  if (format == WGS84Format.DegreesMinutes)
                 return convToDmString(this.longitude,"E","W");
