@@ -1,7 +1,25 @@
-
+/**
+ *  CoordinateTransformationLibrary - Mathias Åhsberg 2009
+ *
+ *  RT90, SWEREF99 and WGS84 coordinate transformation library
+ *
+ * Visit my repository at http://github.com/goober
+ *
+ * This library is a java port of the .NET library by Björn Sållarp.
+ *  calculations are based entirely on the excellent
+ *  javscript library by Arnold Andreassons.
+ *
+ * Source: http://www.lantmateriet.se/geodesi/
+ * Source: Arnold Andreasson, 2007. http://mellifica.se/konsult
+ * Source: Björn Sållarp. 2009. http://blog.sallarp.com
+ * Author: Mathias Åhsberg, 2009. http://github.com/goober/
+ *
+ * License: http://creativecommons.org/licenses/by-nc-sa/3.0/
+ */
 import coordinatetransformation.positions.RT90Position;
 import coordinatetransformation.positions.SWEREF99Position;
 import coordinatetransformation.positions.WGS84Position;
+import java.text.ParseException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -40,7 +58,7 @@ public class CoordinateTransformationJUnit4Test {
         wgsPos = new WGS84Position("N 59º 58' 55.23\" E 017º 50' 06.12\"", WGS84Position.WGS84Format.DegreesMinutesSeconds);
         rtPos = new RT90Position(wgsPos, RT90Position.RT90Projection.rt90_2_5_gon_v);
         }
-        catch( Exception e) {
+        catch( ParseException e) {
         Assert.fail(e.getMessage());
         }
             // Conversion values from Lantmateriet.se, they convert from DMS only.
@@ -100,7 +118,7 @@ public class CoordinateTransformationJUnit4Test {
              wgsPosDM = new WGS84Position("N 62º 10.560' E 015º 54.180'", WGS84Position.WGS84Format.DegreesMinutes);
             wgsPosDMs = new WGS84Position("N 62º 10' 33.60\" E 015º 54' 10.80\"", WGS84Position.WGS84Format.DegreesMinutesSeconds);
         }
-        catch(Exception e) {
+        catch(ParseException e) {
         Assert.fail(e.getMessage());
         }
             double lat = ((double) Math.round(wgsPosDM.getLatitude() * 1000) / 1000);

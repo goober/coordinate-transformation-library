@@ -20,6 +20,7 @@ package coordinatetransformation.positions;
 
 
 import coordinatetransformation.Position;
+import java.text.ParseException;
 
 
 public class WGS84Position extends Position {
@@ -49,7 +50,7 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
      * @param format
      * @throws java.lang.Exception
      */
-    public WGS84Position(String positionString, WGS84Format format) throws Exception{
+    public WGS84Position(String positionString, WGS84Format format) throws ParseException{
         super(Grid.WGS84);
 
         if(format.equals(WGS84Format.Degrees)) {
@@ -60,8 +61,7 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
                this.longitude = Double.parseDouble(lat_lon[1].replace(",", "."));
             }
             else {
-                //TODO Fix exception
-                throw new Exception("The position string is invalid");
+                throw new ParseException("The position string is invalid",0);
 
             }
         }
