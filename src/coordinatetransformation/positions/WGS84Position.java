@@ -138,7 +138,7 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
             else if (format == WGS84Format.DegreesMinutesSeconds)
                 return convToDmsString(this.longitude,"E","W");
             else
-                return Double.toString(this.latitude);
+                return Double.toString(this.longitude);
         }
 
            private String convToDmString(double value, String positiveValue, String negativeValue) {
