@@ -17,7 +17,7 @@
  * License: http://creativecommons.org/licenses/by-nc-sa/3.0/
  */
 
-package coordinatetransformation.positions;
+package com.github.goober.coordinatetransformation.exception;
 
 /**
  * Signals that an error has been reached unexpectedly while parsing or formatting. 

@@ -16,12 +16,12 @@
  *
  * License: http://creativecommons.org/licenses/by-nc-sa/3.0/
  */
-package coordinatetransformation.positions;
+package com.github.goober.coordinatetransformation.positions;
 
 
-import coordinatetransformation.Position;
 import java.text.ParseException;
 
+import com.github.goober.coordinatetransformation.Position;
 
 public class WGS84Position extends Position {
 

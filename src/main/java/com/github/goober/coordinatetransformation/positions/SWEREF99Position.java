@@ -16,10 +16,11 @@
  *
  * License: http://creativecommons.org/licenses/by-nc-sa/3.0/
  */
-package coordinatetransformation.positions;
+package com.github.goober.coordinatetransformation.positions;
 
-import coordinatetransformation.GaussKreuger;
-import coordinatetransformation.Position;
+import com.github.goober.coordinatetransformation.GaussKreuger;
+import com.github.goober.coordinatetransformation.Position;
+import com.github.goober.coordinatetransformation.Position.Grid;
 
 public class SWEREF99Position extends Position {
 

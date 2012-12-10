@@ -1,4 +1,4 @@
-package coordinatetransformation;
+package com.github.goober.coordinatetransformation;
 
 /** Java-implementation of "Gauss Conformal Projection
  * (Transverse Mercator), Krügers Formulas".

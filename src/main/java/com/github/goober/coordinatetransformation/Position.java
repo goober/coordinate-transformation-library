@@ -17,7 +17,7 @@
  * License: http://creativecommons.org/licenses/by-nc-sa/3.0/
  */
 
-package coordinatetransformation;
+package com.github.goober.coordinatetransformation;
 
 
 public abstract class Position {
