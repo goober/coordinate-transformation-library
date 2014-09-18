@@ -15,6 +15,8 @@
  */
 package com.github.goober.coordinatetransformation.positions;
 
+import java.util.Locale;
+
 import com.github.goober.coordinatetransformation.GaussKreuger;
 import com.github.goober.coordinatetransformation.Position;
 import com.github.goober.coordinatetransformation.Position.Grid;
@@ -154,6 +156,6 @@ public class SWEREF99Position extends Position {
     }
     @Override
     public String toString() {
-        return String.format("N: %f E: %f Projection: %s", this.latitude, this.longitude,getProjectionString());
+        return String.format(Locale.US, "N: %f E: %f Projection: %s", this.latitude, this.longitude,getProjectionString());
     }
 }

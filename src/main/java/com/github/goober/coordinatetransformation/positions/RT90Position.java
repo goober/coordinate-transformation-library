@@ -15,6 +15,8 @@
  */
 package com.github.goober.coordinatetransformation.positions;
 
+import java.util.Locale;
+
 import com.github.goober.coordinatetransformation.GaussKreuger;
 import com.github.goober.coordinatetransformation.Position;
 import com.github.goober.coordinatetransformation.Position.Grid;
@@ -123,6 +125,6 @@ public enum RT90Projection {
 
     @Override
     public String toString() {
-        return String.format("X: %f Y: %f, Projection %s", this.latitude, this.longitude, this.getProjectionString());
+        return String.format(Locale.US, "X: %f Y: %f, Projection %s", this.latitude, this.longitude, this.getProjectionString());
     }
 }
