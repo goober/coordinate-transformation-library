@@ -17,6 +17,7 @@ package com.github.goober.coordinatetransformation.positions;
 
 
 import java.text.ParseException;
+import java.util.Locale;
 
 import com.github.goober.coordinatetransformation.Position;
 
@@ -117,12 +118,12 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
          * @return
          */
         public String latitudeToString(WGS84Format format) {
-                             if (format == WGS84Format.DegreesMinutes)
+            if (format == WGS84Format.DegreesMinutes)
                 return convToDmString(this.latitude,"N","S");
             else if (format == WGS84Format.DegreesMinutesSeconds)
                 return convToDmsString(this.latitude,"N","S");
             else
-                return Double.toString(this.latitude);
+                return String.format(Locale.US, "%.10f", this.latitude);
         }
         /**
          * Returns a string represenation in the given format
@@ -135,7 +136,7 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
             else if (format == WGS84Format.DegreesMinutesSeconds)
                 return convToDmsString(this.longitude,"E","W");
             else
-                return Double.toString(this.longitude);
+                return String.format(Locale.US, "%.10f", this.longitude);
         }
 
            private String convToDmString(double value, String positiveValue, String negativeValue) {
@@ -145,7 +146,7 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
                double degrees = Math.floor(Math.abs(value));
                double minutes = (Math.abs(value) - degrees) * 60;
 
-               return String.format("%s %.0fº %.0f'", value >=0 ? positiveValue : negativeValue, degrees, ((double)Math.floor(minutes * 10000) / 10000));
+               return String.format(Locale.US, "%s %.0fº %.0f'", value >=0 ? positiveValue : negativeValue, degrees, ((double)Math.floor(minutes * 10000) / 10000));
            }
 
            private String convToDmsString(double value, String positiveValue,String negativeValue) {
@@ -157,7 +158,7 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
                double minutes = Math.floor((Math.abs(value) - degrees) * 60);
                double seconds = (Math.abs(value) - degrees - minutes / 60) * 3600;
 
-               return String.format("%s %.0fº %.0f' %.5f\"",value >=0 ? positiveValue : negativeValue, degrees, minutes, ((double) Math.round(seconds * 100000) / 100000));
+               return String.format(Locale.US, "%s %.0fº %.0f' %.5f\"",value >=0 ? positiveValue : negativeValue, degrees, minutes, ((double) Math.round(seconds * 100000) / 100000));
            }
 
            private double parseValueFromDmString(String value, String positiveChar) {
@@ -229,6 +230,6 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
            }
            @Override
            public String toString() {
-               return String.format("Latitude: %s  Longitude: %s", latitudeToString(WGS84Format.DegreesMinutesSeconds), longitudeToString(WGS84Format.DegreesMinutesSeconds));
+               return String.format(Locale.US, "Latitude: %s  Longitude: %s", latitudeToString(WGS84Format.DegreesMinutesSeconds), longitudeToString(WGS84Format.DegreesMinutesSeconds));
            }
 }
