@@ -45,8 +45,8 @@ public class CoordinateTransformationJUnit4Test {
 
             // String values from Lantmateriet.se, they convert DMS only.
             // Reference: http://www.lantmateriet.se/templates/LMV_Enkelkoordinattransformation.aspx?id=11500
-            String latDmsStringFromLM = "N 59º 20' 56,09287\"";
-            String lonDmsStringFromLM = "E 18º 2' 50,34806\"";
+            String latDmsStringFromLM = "N 59º 20' 56.09287\"";
+            String lonDmsStringFromLM = "E 18º 2' 50.34806\"";
 
             Assert.assertEquals(latDmsStringFromLM, wgsPos.latitudeToString(WGS84Position.WGS84Format.DegreesMinutesSeconds));
             Assert.assertEquals(lonDmsStringFromLM, wgsPos.longitudeToString(WGS84Position.WGS84Format.DegreesMinutesSeconds));
@@ -103,8 +103,8 @@ public class CoordinateTransformationJUnit4Test {
 
             // String values from Lantmateriet.se, they convert DMS only.
             // Reference: http://www.lantmateriet.se/templates/LMV_Enkelkoordinattransformation.aspx?id=11500
-            String latDmsStringFromLM = "N 59º 58' 55,23001\"";
-            String lonDmsStringFromLM = "E 17º 50' 6,11997\"";
+            String latDmsStringFromLM = "N 59º 58' 55.23001\"";
+            String lonDmsStringFromLM = "E 17º 50' 6.11997\"";
 
             Assert.assertEquals(latDmsStringFromLM, wgsPos.latitudeToString(WGS84Position.WGS84Format.DegreesMinutesSeconds));
             Assert.assertEquals(lonDmsStringFromLM, wgsPos.longitudeToString(WGS84Position.WGS84Format.DegreesMinutesSeconds));
