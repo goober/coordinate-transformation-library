@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.github.goober'
+version = '1.0-SNAPSHOT'
+
+description = """Coordination Transformation Library"""
+
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+
+repositories {
+	mavenCentral()
+}
+dependencies {
+	testCompile group: 'junit', name: 'junit', version:'4.10'
+}
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.1'
+}
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
