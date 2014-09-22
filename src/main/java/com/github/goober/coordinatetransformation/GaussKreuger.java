@@ -1,21 +1,21 @@
+/*
+ * Copyright (C) 2012 Goober <http://www.github.com/goober>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.github.goober.coordinatetransformation;
 
-/** Java-implementation of "Gauss Conformal Projection
- * (Transverse Mercator), Krügers Formulas".
- * - Parameters for SWEREF99 lat-long to/from RT90 and SWEREF99
- *   coordinates (RT90 and SWEREF99 are used in Swedish maps).
- *
- *  This library is a java port of the .NET library by Björn Sållarp.
- *  calculations are based entirely on the excellent
- *  javscript library by Arnold Andreassons.
- *
- * Source: http://www.lantmateriet.se/geodesi/
- * Source: Arnold Andreasson, 2007. http://mellifica.se/konsult
- * Source: Björn Sållarp. 2009. http://blog.sallarp.com
- * Author: Mathias Åhsberg, 2009. http://github.com/goober/
- * 
- * License: http://creativecommons.org/licenses/by-nc-sa/3.0/
- * */
 public class GaussKreuger {
 
     double axis; // Semi-major axis of the ellipsoid.
