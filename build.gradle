@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'com.github.goober'
-version = '1.0-SNAPSHOT'
+version = '1.0'
 
 description = """Coordination Transformation Library"""
 
