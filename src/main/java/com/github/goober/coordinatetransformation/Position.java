@@ -33,9 +33,6 @@ public abstract class Position {
     public Position(Grid format) {
         gridFormat = format;
     }
-    public Position() {
-        
-    }
 
     public double getLatitude() {
         return this.latitude;
