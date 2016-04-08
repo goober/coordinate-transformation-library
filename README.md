@@ -13,6 +13,18 @@ Source: Björn Sållarp. 2009. http://blog.sallarp.com
 Author: Mathias Åhsberg, 2009. http://github.com/goober/
  
 License: http://www.apache.org/licenses/LICENSE-2.0
+
+## Usage
+
+The coordinate-transformation library is available from [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.goober%22%20a%3A%20%22coordinate-transformation-library%22).
+
+```xml
+<dependency>
+    <groupId>com.github.goober</groupId>
+    <artifactId>coordinate-transformation-library</artifactId>
+    <version>1.1</version>
+</dependency>
+```
  
 ## Developer instructions
 
