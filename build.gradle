@@ -1,23 +1,81 @@
+buildscript {
+ dependencies {
+  classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+  classpath 'net.researchgate:gradle-release:2.3.5'
+ }
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'signing'
+apply plugin: 'com.bmuschko.nexus'
+apply plugin: 'net.researchgate.release'
 
 group = 'com.github.goober'
-version = '1.0'
 
 description = """Coordination Transformation Library"""
 
 sourceCompatibility = 1.5
 targetCompatibility = 1.5
 
+eclipse {
+ classpath {
+  downloadSources = true
+  downloadJavadoc = true
+ }
+}
+
 repositories {
 	mavenCentral()
 }
+
 dependencies {
-	testCompile group: 'junit', name: 'junit', version:'4.10'
+	testCompile group: 'junit', name: 'junit', version:'4.12'
 }
+
 task wrapper(type: Wrapper) {
 	gradleVersion = '2.4'
 }
+
 tasks.withType(JavaCompile) {
 	options.encoding = "UTF-8"
 }
+
+modifyPom {
+ project {
+  name 'Coordination Transformation Library'
+  description 'Coordination Transformation Library'
+  url 'https://github.com/goober/coordinate-transformation-library'
+  inceptionYear '2016'
+   scm {
+   url 'https://github.com/goober/coordinate-transformation-library'
+   connection 'scm:https://tomasbjerre@github.com/goober/coordinate-transformation-library.git'
+   developerConnection 'scm:git://github.com/goober/coordinate-transformation-library.git'
+  }
+
+  licenses {
+   license {
+    name 'The Apache Software License, Version 2.0'
+    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    distribution 'repo'
+   }
+  }
+
+  developers {
+   developer {
+    id 'goober'
+    name 'Mathias Åhsberg'
+    email 'mathias.ahsberg@gmail.com'
+   }
+  }
+ }
+}
+
+extraArchive {
+ sources = true
+ tests = true
+ javadoc = true
+}
+
+afterReleaseBuild.dependsOn uploadArchives
