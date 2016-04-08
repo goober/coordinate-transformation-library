@@ -16,10 +16,10 @@
 package com.github.goober.coordinatetransformation.positions;
 
 
+import com.github.goober.coordinatetransformation.Position;
+
 import java.text.ParseException;
 import java.util.Locale;
-
-import com.github.goober.coordinatetransformation.Position;
 
 public class WGS84Position extends Position {
 
@@ -46,7 +46,7 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
      * and longitude. The string is parsed based on the supplied format.
      * @param positionString
      * @param format
-     * @throws java.lang.Exception
+     * @throws ParseException
      */
     public WGS84Position(String positionString, WGS84Format format) throws ParseException{
         super(Grid.WGS84);
@@ -172,7 +172,6 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
                            value = value.substring(value.indexOf("º") +1).trim();
 
                            String minutes = value.substring(0,value.indexOf("'"));
-                           value = value.substring(value.indexOf("'") + 1).trim();
 
                            retVal = Double.parseDouble(degree);
                            retVal += Double.parseDouble(minutes.replace(",", ".")) / 60;
@@ -183,7 +182,6 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
                            if(direction.equals(positiveChar) || direction.equals("-")) {
                                retVal *= -1;
                            }
-
                        }
                    }
                    else {
@@ -219,14 +217,12 @@ public enum WGS84Format {Degrees,DegreesMinutes,DegreesMinutesSeconds}
                           if(direction.equals(positiveChar) || direction.equals("-")) {
                                retVal *= -1;
                            }
-
                    }
                }
                else {
                    retVal = Double.MIN_VALUE;
                }
                return retVal;
-
            }
            @Override
            public String toString() {

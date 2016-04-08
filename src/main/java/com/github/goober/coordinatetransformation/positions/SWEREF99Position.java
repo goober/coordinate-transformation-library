@@ -15,11 +15,10 @@
  */
 package com.github.goober.coordinatetransformation.positions;
 
-import java.util.Locale;
-
 import com.github.goober.coordinatetransformation.GaussKreuger;
 import com.github.goober.coordinatetransformation.Position;
-import com.github.goober.coordinatetransformation.Position.Grid;
+
+import java.util.Locale;
 
 public class SWEREF99Position extends Position {
 
@@ -106,7 +105,7 @@ public class SWEREF99Position extends Position {
 
     private String getProjectionString(SWEREFProjection projection) {
 
-        String retVal = "";
+        String retVal;
         switch (projection) {
 
             case sweref_99_tm:

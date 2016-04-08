@@ -15,11 +15,10 @@
  */
 package com.github.goober.coordinatetransformation.positions;
 
-import java.util.Locale;
-
 import com.github.goober.coordinatetransformation.GaussKreuger;
 import com.github.goober.coordinatetransformation.Position;
-import com.github.goober.coordinatetransformation.Position.Grid;
+
+import java.util.Locale;
 
 
 public class RT90Position extends Position {
@@ -94,7 +93,7 @@ public enum RT90Projection {
     }
 
     private String getProjectionString(RT90Projection projection) {
-        String retVal = "";
+        String retVal;
          switch (projection)
             {
                 case rt90_7_5_gon_v:
@@ -119,7 +118,6 @@ public enum RT90Projection {
                     retVal = "rt90_2.5_gon_v";
                     break;
             }
-
             return retVal;
     }
 

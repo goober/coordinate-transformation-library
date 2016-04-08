@@ -18,19 +18,44 @@ package com.github.goober.coordinatetransformation;
 
 public class GaussKreuger {
 
-    double axis; // Semi-major axis of the ellipsoid.
-    double flattening; // Flattening of the ellipsoid.
-    double central_meridian; // Central meridian for the projection.
-    double scale; // Scale on central meridian.
-    double false_northing; // Offset for origo.
-    double false_easting; // Offset for origo.
+    /**
+     * Semi-major axis of the ellipsoid.
+     */
+    private double axis;
 
-    // Parameters for RT90 and SWEREF99TM.
-    // Note: Parameters for RT90 are choosen to eliminate the
-    // differences between Bessel and GRS80-ellipsoides.
-    // Bessel-variants should only be used if lat/long are given as
-    // RT90-lat/long based on the Bessel ellipsoide (from old maps).
-    // Parameter: projection (string). Must match if-statement.
+    /**
+     * Flattening of the ellipsoid.
+     */
+    private double flattening;
+
+    /**
+     * Central meridian for the projection.
+     */
+    private double central_meridian;
+
+    /**
+     * Scale on central meridian.
+     */
+    private double scale;
+
+    /**
+     * Offset for origo.
+     */
+    private double false_northing;
+
+    /**
+     * Offset for origo.
+     */
+    private double false_easting;
+
+    /**
+     * Parameters for RT90 and SWEREF99TM.
+     * Note: Parameters for RT90 are choosen to eliminate the
+     * differences between Bessel and GRS80-ellipsoides.
+     * Bessel-variants should only be used if lat/long are given as
+     * RT90-lat/long based on the Bessel ellipsoide (from old maps).
+     * @param projection
+     */
     public void swedish_params(String projection) {
         // RT90 parameters, GRS 80 ellipsoid.
         if (projection.equals("rt90_7.5_gon_v")) {
